@@ -748,7 +748,7 @@ class MUnder(NaryableElement):
                     '<m:groupChrPr>'
                     '<m:chr m:val="%s"/>'
                     '<m:pos m:val="bot"/>'
-                    '</m:groupChr>'
+                    '</m:groupChrPr>'  # <-- правильно закрываем
                     '%s'
                     '</m:groupChr>') % (underscript.escape_text(), base)
         return ('<m:limLow>'
@@ -785,13 +785,14 @@ class MOver(NaryableElement):
                     '<m:groupChrPr>'
                     '<m:chr m:val="%s"/>'
                     '<m:pos m:val="top"/>'
-                    '</m:groupChr>'
+                    '</m:groupChrPr>'
                     '%s'
                     '</m:groupChr>') % (overscript.escape_text(), base)
         return ('<m:limUpp>'
                 '%s'
                 '<m:lim>%s</m:lim>'
                 '</m:limUpp>') % (base, to_math_arg(overscript))
+
 
 class MUnderOver(NaryableElement):
     """Underscript-overscript Pair.
