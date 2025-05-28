@@ -577,6 +577,34 @@ class MPhantom(InferredMRowElement):
                 '%s'
                 '</m:phant>') % to_element(self.mrow)
 
+class MGroupChr(InferredMRowElement):
+    name = 'menclose'
+
+    def is_space_like(self):
+        return False
+
+    def embellished_op(self):
+        return None
+
+    def to_str(self):
+        notation = self.attrs.get('notation', '')
+        pos = 'top' if 'top' in notation or 'longdiv' in notation else 'bot'
+        chr_map = {
+            'top': '‾',
+            'bot': '_',
+            'longdiv': '⌊',  # Можно заменить на U+27CC ⟌ если Word поддерживает
+        }
+        chr_val = chr_map.get('longdiv' if 'longdiv' in notation else pos, '_')
+        return (
+            '<m:groupChr>'
+            '<m:groupChrPr>'
+            f'<m:pos m:val="{pos}"/>'
+            f'<m:chr m:val="{xml.sax.saxutils.escape(chr_val)}"/>'
+            '</m:groupChrPr>'
+            f'{to_element(self.mrow)}'
+            '</m:groupChr>'
+        )
+
 class MFenced:
     """Expression Inside Pair of Fences.
     <mfenced> elem* </mfenced>
@@ -633,10 +661,16 @@ class MEnclose(InferredMRowElement):
     def embellished_op(self): # pylint: disable=no-self-use
         return None
 
-    def to_str(self): # TODO borderBoxPr
-        return ('<m:borderBox>'
-                '%s'
-                '</m:borderBox>') % to_element(self.mrow)
+    def to_str(self):
+        notation = self.attrs.get('notation', '')
+        if any(k in notation for k in ['top', 'bottom', 'longdiv']):
+            return str(MGroupChr(self.attrs, *self.children))
+        return (
+            '<m:borderBox>'
+            f'{to_element(self.mrow)}'
+            '</m:borderBox>'
+        )
+
 
 class MSub(NaryableElement):
     """Subscript.
