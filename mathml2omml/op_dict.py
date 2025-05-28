@@ -1,3 +1,4 @@
+# Patch from AlloteSoftware for version 0.0.3-as
 # pylint: disable=missing-docstring, line-too-long, too-many-lines
 
 # Operator Dictionay: See https://www.w3.org/TR/MathML3/appendixc.html

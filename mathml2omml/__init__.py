@@ -1,3 +1,4 @@
+# Patch from AlloteSoftware for version 0.0.3-as
 # pylint: disable=missing-docstring,fixme,too-many-lines
 import itertools
 import re
