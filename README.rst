@@ -10,7 +10,7 @@ Use pip:
 
 .. code:: sh
 
-   pip install mathml2omml
+   pip install git+https://github.com/AlloteSoftware/mathml2omml_as.git
 
 or, use setup.py:
 
