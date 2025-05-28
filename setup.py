@@ -9,7 +9,7 @@ with open(os.path.join(BASEDIR, 'README.rst'), 'r') as f:
 
 setup(
     name='mathml2omml',
-    version='0.0.3-as',
+    version='0.0.3a1',
     description='',
     long_description=LONG_DESCRIPTION,
     url='https://github.com/amedama41/mathml2omml',
