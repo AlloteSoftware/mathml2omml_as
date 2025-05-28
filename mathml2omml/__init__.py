@@ -814,6 +814,24 @@ class MOver(NaryableElement):
     def to_str(self):
         base = to_element(self.children[0])
         overscript = self.children[1]
+
+        # Обработка акцентов через <m:acc>
+        accents = {
+            '\u2192': '⃗',  # → (вектор)
+            '\u20D7': '⃗',  # ⃗ (комбинированная стрелка)
+            '\u00AF': '¯',  # bar
+            '\u005E': 'ˆ',  # hat
+            '\u007E': '̃'   # ~ → COMBINING TILDE (U+0303)
+        }
+
+        if isinstance(overscript, MO):
+            accent_char = overscript.text().strip()
+            if accent_char in accents:
+                return ('<m:acc>'
+                        '<m:accPr><m:chr m:val="%s"/></m:accPr>'
+                        '%s'
+                        '</m:acc>') % (accents[accent_char], base)
+
         if isinstance(overscript, MO) and is_stretch_accent(overscript):
             return ('<m:groupChr>'
                     '<m:groupChrPr>'
@@ -822,10 +840,13 @@ class MOver(NaryableElement):
                     '</m:groupChrPr>'
                     '%s'
                     '</m:groupChr>') % (overscript.escape_text(), base)
+
         return ('<m:limUpp>'
                 '%s'
                 '<m:lim>%s</m:lim>'
                 '</m:limUpp>') % (base, to_math_arg(overscript))
+
+
 
 
 class MUnderOver(NaryableElement):
