@@ -382,6 +382,9 @@ class MSpace(Run): # TODO
 
     def embellished_op(self): # pylint: disable=no-self-use
         return None
+    def __str__(self):
+        # OMML: пробел
+        return '<m:r><m:t> </m:t></m:r>'
 
 class MS(Run):
     """String Literal.
