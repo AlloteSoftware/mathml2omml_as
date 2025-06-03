@@ -8,7 +8,7 @@ with open(os.path.join(BASEDIR, 'README.rst'), 'r') as f:
     LONG_DESCRIPTION = f.read()
 
 setup(
-    name='mathml2omml',
+    name='mathml2omml-as',
     version='0.0.3',
     description='',
     long_description=LONG_DESCRIPTION,
