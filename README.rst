@@ -2,6 +2,7 @@ math2omml
 =========
 
 Pure Python library to convert MathML to OMML (Office Math Markup Language).
+Fixed several bugs from the original version.
 
 Installation
 ------------
