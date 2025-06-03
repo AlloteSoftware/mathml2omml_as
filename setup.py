@@ -9,7 +9,7 @@ with open(os.path.join(BASEDIR, 'README.rst'), 'r') as f:
 
 setup(
     name='mathml2omml-as',
-    version='0.0.3',
+    version='0.1.0',
     description='',
     long_description=LONG_DESCRIPTION,
     url='https://github.com/AlloteSoftware/mathml2omml_as',
