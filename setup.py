@@ -8,7 +8,7 @@ with open(os.path.join(BASEDIR, 'README.rst'), 'r') as f:
     LONG_DESCRIPTION = f.read()
 
 setup(
-    name='mathml2omml-as',
+    name='mathml2omml_as',
     version='0.1.0',
     description='Convert MathML to OMML (Allote.Software fork)',
     long_description=LONG_DESCRIPTION,
