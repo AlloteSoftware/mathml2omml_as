@@ -10,15 +10,14 @@ with open(os.path.join(BASEDIR, 'README.rst'), 'r') as f:
 setup(
     name='mathml2omml-as',
     version='0.1.0',
-    description='',
+    description='Convert MathML to OMML (Allote.Software fork)',
     long_description=LONG_DESCRIPTION,
     url='https://github.com/AlloteSoftware/mathml2omml_as',
     author='amedama41(patched by Allote.Software)',
-    author_email='kamo.devel41@gmail.com',
     keywords=['MathML', 'OpenXML'],
     packages=['mathml2omml'],
     install_requires=[],
-    python_requires='>=3.5',
+    python_requires='>=3.7',
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
